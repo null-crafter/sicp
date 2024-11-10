@@ -1,0 +1,16 @@
+(define (switch-in-between sentence)
+  (if (equal? sentence '())
+    '()
+    (cons
+      (if (equal? (car sentence) 'you) 'me (car sentence))
+      (switch-in-between (cdr sentence))
+    )
+  )
+)
+(define (switch sentence)
+  (cons
+    (if (equal? (car sentence) 'You) 'I (car sentence))
+    (switch-in-between (cdr sentence))
+  )
+)
+(define main (display (switch '(You love you))))
