@@ -1,0 +1,13 @@
+(define (remove-dupls lst read)
+  (if (equal? lst '())
+    read
+    (if (memq (car lst) read)
+        (remove-dupls (cdr lst) read)
+        (remove-dupls (cdr lst) (append read (cons (car lst) '())))
+    )
+  )
+)
+(define (dupls-removed lst) 
+  (remove-dupls lst '())
+    )
+(define main (display (dupls-removed '(a b c d a b c d a c d a))))
